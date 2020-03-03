@@ -1,34 +1,36 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, Button, Alert} from 'react-native';
+import {View, Text, StyleSheet, Image, Button, Alert, ImageBackground, TouchableOpacity, TextInput} from 'react-native';
 
 class ExerciseReactNativ01 extends Component
 {
 
-  greeting = () => { Alert.alert('Hello this is TalentScout Medellin') }
+  greeting()
+  { 
+    Alert.alert('Hello this is TalentScout Medellin') 
+  }
 
   render()
   {
     return(
-      <View style={styles.container}> 
+      <ImageBackground source={require('./assets/fondo3.jpg')} style={styles.container}> 
 
         <View style={styles.header}>
 
           <View style={styles.headerLeft}>
-
             <Image source={require('./assets/ctm.jpg')} style={styles.logo}/>
           </View>
 
           <View style={styles.headerRight}>
             <Button title="Login" onPress={this.greeting}/>
-
           </View>
-
         </View>
 
         <View style={styles.body}>
-
-        <Text>Hello this is TalentScout Medellin</Text>
-
+          <TouchableOpacity>
+            <Text>Hello this is TalentScout Medellin</Text>
+            <TextInput placeholder="UserName" placeholderTextColor="white" maxLength={8} style={styles.textInput}>
+            </TextInput>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
@@ -47,7 +49,7 @@ class ExerciseReactNativ01 extends Component
 
         </View>
 
-      </View>    
+      </ImageBackground>    
     );
   }
 }
@@ -57,7 +59,7 @@ const styles = StyleSheet.create(
   container : 
   {
     flex : 4,
-    flexDirection : 'column'  
+    backgroundColor : 'green'
   },
   logo :
   {
@@ -90,6 +92,14 @@ const styles = StyleSheet.create(
     flex : 4,
     justifyContent : 'center',
     alignItems : 'center'
+  },
+  textInput :
+  {
+    borderWidth:1, 
+    borderColor: 'white', 
+    padding: 5, 
+    marginTop:10, 
+    borderRadius: 5
   },
   footer : 
   {
