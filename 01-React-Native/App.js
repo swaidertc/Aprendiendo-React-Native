@@ -4,15 +4,37 @@ import {View, Text, StyleSheet, Image, Button, Alert, ImageBackground, Touchable
 class ExerciseReactNativ01 extends Component
 {
 
-  greeting()
-  { 
-    Alert.alert('Hello this is TalentScout Medellin') 
+  constructor(props)
+  {
+    super(props)
+    this.state = 
+      {
+        greeting : 'Hello person',
+        user : 1,
+        userName : 'Swaider'
+      }
   }
 
+  sumUser = () =>
+    {
+      this.setState 
+      (
+        {
+          user : this.state.user + 1
+        }
+      )
+
+    }
+  
   render()
   {
+
+    let {greeting} = this.state
+    let {user} = this.state
+    let {userName} = this.state
+
     return(
-      <ImageBackground source={require('./assets/fondo3.jpg')} style={styles.container}> 
+      <ImageBackground source={require('./assets/fondo2.jpg')} style={styles.container}> 
 
         <View style={styles.header}>
 
@@ -21,14 +43,15 @@ class ExerciseReactNativ01 extends Component
           </View>
 
           <View style={styles.headerRight}>
-            <Button title="Login" onPress={this.greeting}/>
+            <Button title="Sum Users" onPress={this.sumUser}/>
           </View>
         </View>
 
         <View style={styles.body}>
           <TouchableOpacity>
-            <Text>Hello this is TalentScout Medellin</Text>
-            <TextInput placeholder="UserName" placeholderTextColor="white" maxLength={8} style={styles.textInput}>
+          <Text style={styles.textColor}>{greeting} Users: {user}</Text>
+            <TextInput placeholder="UserName" onChangeText ={(userName) => 
+              this.setState({userName})} placeholderTextColor="white" maxLength={20} style={styles.textInput}>
             </TextInput>
           </TouchableOpacity>
         </View>
@@ -36,11 +59,11 @@ class ExerciseReactNativ01 extends Component
         <View style={styles.footer}>
 
             <View style={styles.footerone}>
-            <Text>Welcome</Text>
+            <Text style={styles.textColor}>{userName}</Text>
             </View>
 
             <View style={styles.footertwo}>
-            <Text>Welcome</Text>
+            <Text style={styles.textColor}>Welcome</Text>
             </View>
 
             <View style={styles.footerthree}>
@@ -59,7 +82,8 @@ const styles = StyleSheet.create(
   container : 
   {
     flex : 4,
-    backgroundColor : 'green'
+    backgroundColor : 'green',
+    color : 'white'
   },
   logo :
   {
@@ -74,12 +98,16 @@ const styles = StyleSheet.create(
     flexDirection : 'row',
     marginTop : 5
   },
+  textColor :
+  {
+    color : 'white'
+  },
   headerRight :
   {
     flex : 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft : 200
+    marginLeft : 100
   },
   headerLeft :
   {
